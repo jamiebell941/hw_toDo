@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/bundle.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(task, index) in tasks" v-bind:class="task.isDone ? 'done':'not-done'">
+            <span> {{task.activity}} </span>
+            <span v-if="task.isDone">Done!</span>
+            <span><button v-if="!task.isDone" v-on:click=doTask(index)></button></span>
+            </li>
+        </ul>
+        <form v-on:submit.prevent="saveNewTask">
+            <label for="new-task">Add New Task</label>
+          <input type="text" id="new-task" v-model = "newTask"/>
+          <input type="submit" value="Save New Task"/>
+          </form>
+
+    </div>
+    
+</body>
+</html>
